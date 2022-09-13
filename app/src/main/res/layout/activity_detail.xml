@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity"
+    android:orientation="vertical">
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtubePlayer"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"/>
+
+    <TextView
+        android:id="@+id/dtTvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview"
+        android:textColor="@color/aqua_ccc"
+        android:textSize="36sp"
+        tools:text="Blacklight"
+        android:paddingTop="5dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"/>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:isIndicator="true"
+        android:numStars="10"
+        android:progressTint="@color/cyan_ac5"
+        android:rating="8.5"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"/>
+
+    <TextView
+        android:id="@+id/dtTvOverview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/textview"
+        android:textColor="@color/cyan_ac5"
+        android:textSize="15sp"
+        android:padding="5dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        tools:text="Travis Block is a shadowy Government agent who specializes in removing operatives whose covers have been exposed. He then has to uncover a deadly conspiracy within his own ranks that reaches the highest echelons of power."
+        />
+
+    <Button
+        android:id="@+id/btnGetTicket"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:textSize="20sp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/aqua_ccc"
+        android:text="@string/get_ticket"/>
+
+
+
+
+</LinearLayout>

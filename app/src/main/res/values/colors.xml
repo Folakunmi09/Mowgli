@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cyan_ac5">#FF03DAC5</color>
+    <color name="cyan_786">#FF018786</color>
+    <color name="aqua">#FF00ffff</color>
+    <color name="aqua_5e5">#FF00e5e5</color>
+    <color name="aqua_ccc">#FF00cccc</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

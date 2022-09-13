@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/itemContainer"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="10dp">
+
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_alignBottom="@id/tvOverview"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="110dp"
+        android:layout_toEndOf="@+id/ivPoster"
+        android:textSize="24sp"
+        tools:text="@string/movie_title" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_toEndOf="@id/ivPoster"
+        android:layout_marginStart="5dp"
+        android:layout_alignParentEnd="true"
+        android:outlineAmbientShadowColor="@color/aqua_ccc"
+        android:background="?android:attr/listDivider"
+        android:layout_below="@id/tvTitle"/>
+
+    <TextView
+        android:id="@+id/tvOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/ivPoster"
+        android:textColor="@color/cyan_786"
+        tools:text="@string/movie_overview"/>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tvOverview"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:background="?android:attr/listDivider"/>
+
+
+
+
+</RelativeLayout>

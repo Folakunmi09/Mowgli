@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity">
+
+    <TextView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/mowgli"
+        android:textAlignment="center"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/aqua_ccc"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bannerDescription"
+        android:text="@string/insert_description_here"
+        android:textStyle="italic"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textColor="@color/cyan_ac5"
+        app:layout_constraintTop_toBottomOf="@id/banner"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="@string/username_hint"
+        android:textColorHint="@color/cyan_ac5"
+        android:textColor="@color/cyan_ac5"
+        android:backgroundTint="@color/cyan_ac5"
+        android:inputType="text"
+        android:textSize="24sp"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bannerDescription"
+        />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/email_address_hint"
+        android:textColorHint="@color/cyan_ac5"
+        android:textColor="@color/cyan_ac5"
+        android:backgroundTint="@color/cyan_ac5"
+        android:inputType="textEmailAddress"
+        android:textSize="24sp"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/username"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:textSize="24sp"
+        android:padding="10dp"
+        android:hint="@string/password_hint"
+        android:textColorHint="@color/cyan_ac5"
+        android:textColor="@color/cyan_ac5"
+        android:backgroundTint="@color/cyan_ac5"
+        app:layout_constraintTop_toBottomOf="@id/email"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:textSize="24sp"
+        android:padding="10dp"
+        android:hint="@string/confirm_password_hint"
+        android:textColorHint="@color/cyan_ac5"
+        android:textColor="@color/cyan_ac5"
+        android:backgroundTint="@color/cyan_ac5"
+        app:layout_constraintTop_toBottomOf="@id/password"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+
+    <Button
+        android:id="@+id/registerUser"
+        android:layout_width="380dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/aqua_ccc"
+        android:text="@string/sign_up"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/confirmPassword"
+        />
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleLarge"
+        android:visibility="gone"
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_centerInParent="true"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

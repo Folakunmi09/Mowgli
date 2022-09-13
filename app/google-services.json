@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "514905789721",
+    "firebase_url": "https://mowgli-5296c-default-rtdb.firebaseio.com",
+    "project_id": "mowgli-5296c",
+    "storage_bucket": "mowgli-5296c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514905789721:android:67998062676f44f91b2188",
+        "android_client_info": {
+          "package_name": "com.example.mowgli"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "514905789721-hnmjbkmmhn07p5fr7di0c9dg1taoua1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV7LMUFwW0NYglng6YaThdgRNq-S4JpN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "514905789721-hnmjbkmmhn07p5fr7di0c9dg1taoua1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
