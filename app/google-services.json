@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "514905789721",
-    "firebase_url": "https://mowgli-5296c-default-rtdb.firebaseio.com",
-    "project_id": "mowgli-5296c",
-    "storage_bucket": "mowgli-5296c.appspot.com"
+    "project_number": "231588029176",
+    "firebase_url": "https://mowgli-99370-default-rtdb.firebaseio.com",
+    "project_id": "mowgli-99370",
+    "storage_bucket": "mowgli-99370.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:514905789721:android:67998062676f44f91b2188",
+        "mobilesdk_app_id": "1:231588029176:android:9c9c9a33184c404dd3110d",
         "android_client_info": {
           "package_name": "com.example.mowgli"
         }
       },
       "oauth_client": [
         {
-          "client_id": "514905789721-hnmjbkmmhn07p5fr7di0c9dg1taoua1n.apps.googleusercontent.com",
+          "client_id": "231588029176-6b04r2npfhcad1qkik3051o6uql4o8ao.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCV7LMUFwW0NYglng6YaThdgRNq-S4JpN4"
+          "current_key": "AIzaSyBXDAVQx1NEsXzQ3ZNVip9c9XC2TcCwyN4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "514905789721-hnmjbkmmhn07p5fr7di0c9dg1taoua1n.apps.googleusercontent.com",
+              "client_id": "231588029176-6b04r2npfhcad1qkik3051o6uql4o8ao.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
