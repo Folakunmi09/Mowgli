@@ -95,6 +95,9 @@ public class MainActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
+        else if (item.getItemId() == R.id.bookings) {
+            startActivity(new Intent(MainActivity.this, BookingsActivity.class));
+        }
         return super.onOptionsItemSelected(item);
     }
 }

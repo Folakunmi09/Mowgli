@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookingDetailActivity">
+
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        tools:srcCompat="@tools:sample/avatars"
+        />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/ivPoster"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="5dp"
+        android:background="@android:drawable/divider_horizontal_bright" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvShowingDateText"
+        android:text="Date:"
+        android:layout_below="@id/divider"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:textSize="20sp"
+        android:textColor="@color/aqua_ccc"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvShowingDate"
+        tools:text="19 Sep 2022"
+        android:layout_toEndOf="@id/tvShowingDateText"
+        android:layout_alignTop="@id/tvShowingDateText"
+        android:layout_marginStart="5dp"
+        android:textSize="20sp"
+        android:textColor="@color/aqua_ccc"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvShowingTimeText"
+        android:text="Time:"
+        android:layout_toEndOf="@id/tvShowingDate"
+        android:layout_alignTop="@id/tvShowingDateText"
+        android:layout_marginStart="20dp"
+        android:textSize="20sp"
+        android:textColor="@color/aqua_ccc"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvShowingTime"
+        tools:text="07:00 pm"
+        android:layout_toEndOf="@id/tvShowingTimeText"
+        android:layout_alignTop="@id/tvShowingTimeText"
+        android:layout_marginStart="3dp"
+        android:textSize="20sp"
+        android:textColor="@color/aqua_ccc"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvOrderNumberText"
+        android:text="Order Number:"
+        android:layout_below="@id/tvShowingDate"
+        android:layout_marginTop="10dp"
+        android:layout_alignStart="@id/tvShowingDateText"
+        android:textSize="20sp"
+        android:textColor="@color/aqua_ccc"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvOrderNumber"
+        tools:text="A01234"
+        android:layout_toEndOf="@id/tvOrderNumberText"
+        android:layout_alignTop="@id/tvOrderNumberText"
+        android:layout_marginStart="3dp"
+        android:textSize="20sp"
+        android:textColor="@color/aqua_ccc"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvSeatsText"
+        android:text="Seat(s):"
+        android:layout_alignStart="@id/tvShowingDateText"
+        android:layout_below="@id/tvOrderNumberText"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/aqua_ccc"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvSeats"
+        tools:text="A5"
+        android:layout_toEndOf="@id/tvSeatsText"
+        android:layout_alignTop="@id/tvSeatsText"
+        android:layout_marginStart="3dp"
+        android:textSize="20sp"
+        android:textColor="@color/aqua_ccc"
+        />
+
+    <ImageView
+        android:id="@+id/ivBarcode"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/tvSeatsText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/barcode" />
+
+</RelativeLayout>
