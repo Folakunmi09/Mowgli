@@ -85,6 +85,8 @@
         android:backgroundTint="@color/aqua_ccc"
         android:text="@string/get_ticket"/>
 
+<!--    todo: add showtime & show date picker-->
+
 
 
 

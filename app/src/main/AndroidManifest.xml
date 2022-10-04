@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mowgli">
         <activity
-            android:name=".BookingDetailActivity"
+            android:name=".ReservationDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".BookingsActivity"
+            android:name=".ViewReservationsActivity"
             android:exported="false" />
         <activity
             android:name=".TicketingActivity"

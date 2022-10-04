@@ -32,8 +32,6 @@ public class Movie {
         overview = jsonObject.getString("overview");//movie's description
         rating = jsonObject.getDouble("vote_average");
         movieId = jsonObject.getInt("id");
-
-
     }
 
     public static List<Movie> fromJsonArray(JSONArray jsonArray) throws JSONException {
@@ -48,6 +46,7 @@ public class Movie {
         }
         return movies;
     }
+
 
     public String getPosterPath(){
         //if we simply return posterPath as is, it's going to be unusable. We won't be able to

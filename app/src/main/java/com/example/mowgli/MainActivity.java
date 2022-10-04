@@ -5,21 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.codepath.asynchttpclient.AsyncHttpClient;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 import com.example.mowgli.adapters.MovieAdapter;
 import com.example.mowgli.models.Movie;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
@@ -96,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
         else if (item.getItemId() == R.id.bookings) {
-            startActivity(new Intent(MainActivity.this, BookingsActivity.class));
+            startActivity(new Intent(MainActivity.this, ViewReservationsActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

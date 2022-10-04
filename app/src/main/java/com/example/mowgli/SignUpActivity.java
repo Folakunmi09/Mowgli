@@ -130,7 +130,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                               Toast.makeText(SignUpActivity.this, "User has been registered successfully!", Toast.LENGTH_LONG).show();
                               progressBar.setVisibility(View.GONE);
 
-
                               FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                               currentUser.sendEmailVerification();
                               Log.i(TAG, "Verification email sent to user");

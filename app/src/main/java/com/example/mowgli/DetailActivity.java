@@ -4,6 +4,7 @@ package com.example.mowgli;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -63,8 +64,7 @@ public class DetailActivity extends YouTubeBaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DetailActivity.this, TicketingActivity.class);
-                intent.putExtra("movieTitle", movie.getTitle());
-                intent.putExtra("posterPath", movie.getPosterPath());
+                intent.putExtra("movieObject", Parcels.wrap(movie));
                 startActivity(intent);
             }
         });

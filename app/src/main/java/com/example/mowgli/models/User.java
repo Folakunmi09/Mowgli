@@ -2,7 +2,7 @@ package com.example.mowgli.models;
 
 public class User {
 
-    public String username, email;
+    public String userId, username, email;
 
     public User(){
 

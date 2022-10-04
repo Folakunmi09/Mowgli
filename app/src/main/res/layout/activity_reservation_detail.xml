@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BookingDetailActivity">
+    tools:context=".ReservationDetailActivity">
 
     <ImageView
         android:id="@+id/ivPoster"
@@ -97,35 +97,35 @@
         android:textColor="@color/aqua_ccc"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvSeatsText"
-        android:text="Seat(s):"
-        android:layout_alignStart="@id/tvShowingDateText"
-        android:layout_below="@id/tvOrderNumberText"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:textColor="@color/aqua_ccc"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/tvSeatsText"-->
+<!--        android:text="Seat(s):"-->
+<!--        android:layout_alignStart="@id/tvShowingDateText"-->
+<!--        android:layout_below="@id/tvOrderNumberText"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="@color/aqua_ccc"-->
+<!--        />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvSeats"
-        tools:text="A5"
-        android:layout_toEndOf="@id/tvSeatsText"
-        android:layout_alignTop="@id/tvSeatsText"
-        android:layout_marginStart="3dp"
-        android:textSize="20sp"
-        android:textColor="@color/aqua_ccc"
-        />
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/tvSeats"-->
+<!--        tools:text="A5"-->
+<!--        android:layout_toEndOf="@id/tvSeatsText"-->
+<!--        android:layout_alignTop="@id/tvSeatsText"-->
+<!--        android:layout_marginStart="3dp"-->
+<!--        android:textSize="20sp"-->
+<!--        android:textColor="@color/aqua_ccc"-->
+<!--        />-->
 
     <ImageView
         android:id="@+id/ivBarcode"
         android:layout_width="300dp"
         android:layout_height="100dp"
-        android:layout_below="@id/tvSeatsText"
+        android:layout_below="@id/tvOrderNumberText"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"

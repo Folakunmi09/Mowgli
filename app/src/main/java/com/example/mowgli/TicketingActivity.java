@@ -3,6 +3,8 @@ package com.example.mowgli;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,24 +14,43 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.mowgli.models.Movie;
 import com.example.mowgli.models.MovieShowing;
+import com.example.mowgli.models.Reservation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+
+import org.parceler.Parcels;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class TicketingActivity extends AppCompatActivity {
     private static final String TAG = "Ticketing Activity";
 
     private Button btnCompleteBooking;
+    private Movie movie;
     private TextView tvTicketCount, tvTitle;
     private ImageView ivPoster, ivIncrementTicket, ivDecrementTicket;
     int ticketCount;
     MovieShowing movieShowing;
-
-    DatabaseReference databaseReference;
+    DatabaseReference movieShowingDatabase, reservationDatabase;
+    FirebaseUser currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,14 +64,21 @@ public class TicketingActivity extends AppCompatActivity {
         ivDecrementTicket = findViewById(R.id.ivDecrementTicket);
 
         ticketCount = Integer.parseInt(tvTicketCount.getText().toString());
-        databaseReference = FirebaseDatabase.getInstance().getReference("MovieShowings");
-        movieShowing = new MovieShowing(10);
+        currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        movieShowingDatabase = FirebaseDatabase.getInstance().getReference("MovieShowings");
+        reservationDatabase = FirebaseDatabase.getInstance().getReference("Reservations");
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            tvTitle.setText(extras.getString("movieTitle"));
-            movieShowing.setMovieTitle(extras.getString("movieTitle"));
-            Glide.with(this).load(extras.getString("posterPath")).into(ivPoster);
+            movie = Parcels.unwrap(extras.getParcelable("movieObject"));
+            tvTitle.setText(movie.getTitle());
+//            LocalDate today = LocalDate.now();
+//            Date showDate = Date.from(today.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant());
+//            Date showTime = Date.from(Instant.from(LocalTime.NOON));
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            movieShowing = new MovieShowing(movie, LocalDate.now().plusDays(1).format(dateFormatter),
+                    "12:00 PM", 10);
+            Glide.with(this).load(movie.getPosterPath()).into(ivPoster);
         }
         else{
             Log.d(TAG, "No movie title or posterPath passed to class.");
@@ -71,7 +99,7 @@ public class TicketingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO: set upper bound to per purchase limit?
-                if (ticketCount < movieShowing.getMaxCapacity()) {
+                if (ticketCount <= movieShowing.getMaxCapacity()) {
                     ticketCount++;
                     tvTicketCount.setText(String.valueOf(ticketCount));
 
@@ -84,34 +112,68 @@ public class TicketingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 movieShowing.updateTicketCount(ticketCount);
-                databaseReference.addValueEventListener(new ValueEventListener() {
+                movieShowingDatabase.child(movieShowing.getShowingId()).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        MovieShowing mShowing = snapshot.child(movieShowing.getMovieTitle()).getValue(MovieShowing.class);
-
-                        if (mShowing != null) {
-                            if (ticketCount > mShowing.getAvailableTickets()) {
-                                Toast.makeText(TicketingActivity.this, "Selected number of tickets unable. Failed to get tickets.", Toast.LENGTH_SHORT).show();
-                                tvTicketCount.setText("0");
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            MovieShowing mShowing = task.getResult().getValue(MovieShowing.class);
+                            if (mShowing != null) {
+                                if (ticketCount > mShowing.getAvailableTickets()) {
+                                    Toast.makeText(TicketingActivity.this, "Selected number of tickets unable. Failed to get tickets.", Toast.LENGTH_SHORT).show();
+                                    tvTicketCount.setText("0");
+                                }
+                                else{
+                                    mShowing.updateTicketCount(ticketCount);
+                                    movieShowingDatabase.child(mShowing.getShowingId()).setValue(mShowing);
+                                }
                             }
                             else{
-                                mShowing.updateTicketCount(ticketCount);
-                                databaseReference.child(mShowing.getMovieTitle()).setValue(movieShowing);
+                                Log.d(TAG, String.valueOf(movieShowing));
+                                movieShowingDatabase.child(movieShowing.getShowingId()).setValue(movieShowing);
                             }
                         }
                         else{
-                            Log.d(TAG, String.valueOf(movieShowing));
-                            databaseReference.child(movieShowing.getMovieTitle()).setValue(movieShowing);
+                            Log.d(TAG, "Failed to get movieShowing from database");
                         }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Log.d(TAG, "Failed to update movieShowing");
-
                     }
                 });
 
+                // todo: update reservation collection with info and user database with reservation id
+                // toDO: reservation info to store in barcode - user email, movie title, no.of tickets, seats, show date, time
+                // TODO: reservation info to store in database - useremail, showing id, no. of tickets, seats, reservation id
+                // TODO: Showing should have ...
+                // Use generateBarcode function to get Barcode.
+                // For multiple seats, do comma seperated string as seat value.
+                // for single seat, take note to not have the comma
+                String reservationInfo = ticketCount + " tickets for " +
+                        movieShowing.getMovie().getTitle() + " at " + movieShowing.getShowTime() +
+                        " " +  movieShowing.getShowDate() + " for " +
+                        currentUser.getEmail();
+
+
+                Reservation reservation =
+                        new Reservation(
+                                currentUser.getEmail(),
+                                movieShowing,
+                                ticketCount,
+                                reservationInfo);
+                reservationDatabase.orderByChild("userEmail")
+                        .equalTo(currentUser.getEmail())
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                reservationDatabase.child(reservation.getReservationId()).setValue(reservation);
+                                Log.d(TAG, "Reservation added to database");
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Log.e(TAG, "Failed to add reservation to database", error.toException());
+                            }
+                        });
             }
         });
     }
+
+
 }
