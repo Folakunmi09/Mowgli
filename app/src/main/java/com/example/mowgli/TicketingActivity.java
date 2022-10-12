@@ -164,11 +164,14 @@ public class TicketingActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 reservationDatabase.child(reservation.getReservationId()).setValue(reservation);
                                 Log.d(TAG, "Reservation added to database");
+                                Toast.makeText(TicketingActivity.this, "Reservation successful. Check bookings to view.", Toast.LENGTH_LONG).show();
+                                //todo: send user confirmation email
                             }
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
                                 Log.e(TAG, "Failed to add reservation to database", error.toException());
+                                Toast.makeText(TicketingActivity.this, "Failed to book reservation!", Toast.LENGTH_LONG).show();
                             }
                         });
             }
