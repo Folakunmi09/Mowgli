@@ -3,6 +3,7 @@ package com.example.mowgli;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -98,7 +99,6 @@ public class TicketingActivity extends AppCompatActivity {
         ivIncrementTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: set upper bound to per purchase limit?
                 if (ticketCount <= movieShowing.getMaxCapacity()) {
                     ticketCount++;
                     tvTicketCount.setText(String.valueOf(ticketCount));
@@ -138,13 +138,6 @@ public class TicketingActivity extends AppCompatActivity {
                     }
                 });
 
-                // todo: update reservation collection with info and user database with reservation id
-                // toDO: reservation info to store in barcode - user email, movie title, no.of tickets, seats, show date, time
-                // TODO: reservation info to store in database - useremail, showing id, no. of tickets, seats, reservation id
-                // TODO: Showing should have ...
-                // Use generateBarcode function to get Barcode.
-                // For multiple seats, do comma seperated string as seat value.
-                // for single seat, take note to not have the comma
                 String reservationInfo = ticketCount + " tickets for " +
                         movieShowing.getMovie().getTitle() + " at " + movieShowing.getShowTime() +
                         " " +  movieShowing.getShowDate() + " for " +
@@ -164,8 +157,10 @@ public class TicketingActivity extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 reservationDatabase.child(reservation.getReservationId()).setValue(reservation);
                                 Log.d(TAG, "Reservation added to database");
-                                Toast.makeText(TicketingActivity.this, "Reservation successful. Check bookings to view.", Toast.LENGTH_LONG).show();
+                                Toast.makeText(TicketingActivity.this, "Tickets reserved successfully.", Toast.LENGTH_LONG).show();
                                 //todo: send user confirmation email
+                                //redirect user to bookings so they can view change
+                                startActivity(new Intent(TicketingActivity.this, ViewReservationsActivity.class));
                             }
 
                             @Override

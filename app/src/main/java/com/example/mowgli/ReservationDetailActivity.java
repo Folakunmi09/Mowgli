@@ -40,6 +40,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
         tvShowingTime.setText(reservation.getMovieShowing().getShowTime());
         tvOrderNumber.setText(reservation.getReservationId());
 
+
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
             String info = reservation.getReservationInfo();
@@ -47,10 +48,10 @@ public class ReservationDetailActivity extends AppCompatActivity {
                 info = info.substring(0, 80);
             }
             BitMatrix bitMatrix = multiFormatWriter.encode(info, BarcodeFormat.CODE_128,
-                    600, 300);
-            Bitmap bitmap = Bitmap.createBitmap(600, 300, Bitmap.Config.RGB_565);
-            for (int i = 0; i < 600; i++){
-                for (int j = 0; j < 300; j++){
+                    600, 200 );
+            Bitmap bitmap = Bitmap.createBitmap(600, 200, Bitmap.Config.RGB_565);
+            for (int i = 0; i < ivBarcode.getWidth(); i++){
+                for (int j = 0; j < ivBarcode.getHeight(); j++){
                     bitmap.setPixel(i,j,bitMatrix.get(i,j)? Color.BLACK:Color.WHITE);
                 }
             }
@@ -58,6 +59,7 @@ public class ReservationDetailActivity extends AppCompatActivity {
         } catch (WriterException e) {
             e.printStackTrace();
             Log.d(TAG, "Failed to generate Barcode");
+
         }
 
 
